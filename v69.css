@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    padding:32px 16px;
+    flex-direction: column;
+    color: #343b45;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:32px 0;
+    font-size: 1.6rem;
+    line-height: 0.7;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header>h1{
+    display:flex;
+    align-items: center;
+    gap:1rem;
+    color: #b50026;
+}
+
+header>h1>img{
+    width: 52px;
+    height: 52px;
+    border-radius: 7px;
+}
+
+.sub_text{
+    margin-top: 16px;
+    font-size: 0.7rem;
+}
+
+main{
+    display: flex;
+    margin-top: 48px;
+    width: 85%;
+    justify-content: center;
+}
+
+.content_nd_WAT{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.WAT{
+    display: flex;
+    gap:1rem;
+    margin-bottom: 24px;
+}
+
+.WAT>span{
+    padding:8px 16px;
+    border: 1px solid rgb(148, 148, 148);
+    border-radius: 7px;
+}
+
+.content{
+    border: 1px solid rgb(148, 148, 148);
+    border-radius: 7px;
+    padding:32px;
+    margin-bottom: 24px;
+    max-width: 85%;
+    color: #86868e;
+    font-size: 1.6rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+}
+
+.test_setting{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 20%;
+    min-width: 20%;
+    border: 1px solid rgb(148, 148, 148);
+    border-radius: 7px;
+    padding: 24px;
+    height: 43vh;
+    gap:20px;
+}
+
+.test_setting>div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap:10px;
+}
+
+.test_setting>h2{
+    margin-bottom: 16px;
+}
+
+.time,.wc,.save{
+    margin-top: 8px;;
+    padding: 4px 12px;
+    border: 1px solid rgb(148, 148, 148);
+    border-radius: 7px;
+}
+
+.time:hover,.wc:hover,.save:hover{
+    background-color: pink;
+    padding: 6px 14px;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.time:active,.wc:active,.save:active{
+    background-color: rgb(228, 27, 61);
+    color: white;
+    cursor: pointer;
+}
+
+.subhead{
+    font-size: large;
+    font-weight: bold;
+}
+
+.crnt{
+    color: black;
+    font-size: 28px;
+    /* animation: b1 1s ease-in 0 infinite alternate; */
+    animation-name: b1;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes b1 {
+    from{
+        border-bottom:4px solid #343b45;
+    }
+
+    to{
+        border-bottom:none;
+    }
+}
