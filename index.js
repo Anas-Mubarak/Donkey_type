@@ -385,10 +385,6 @@ function blink(){
         {
             ipm = e.key
         }
-        else
-        {
-            
-        }
         if(ct>0&&game_over==0)
         {
             if(ipm!='Backspace')
@@ -467,6 +463,7 @@ function blink(){
                     ipm = e.target.value.slice(-1)
                     document.querySelector('.tester').innerText = ipm
                 })
+                mf = 1
         })
     }
     }
