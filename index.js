@@ -463,7 +463,7 @@ function blink(){
                 text_area.addEventListener('click',()=>{
                 mob_input.focus()
                 console.log('changes applied')
-                mob_input.addEventListener('input',()=>{
+                mob_input.addEventListener('input',(e)=>{
                     ipm = e.target.value.slice(-1)
                     console.log(ipm)
                 })
