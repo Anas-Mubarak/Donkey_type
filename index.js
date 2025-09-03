@@ -380,7 +380,11 @@ function blink(){
     cl.classList.add('crnt')
 }
 
-    window.addEventListener('keydown',(e)=>{
+screen_check()
+
+  if(mf!=1)
+  {
+        window.addEventListener('keydown',(e)=>{
         ipm = e.key
         if(ct>0&&game_over==0)
         {
@@ -429,6 +433,7 @@ function blink(){
             blink()
         }
     })
+ } 
 
     function reset_timer(time_bt){
         st = time_bt
@@ -446,9 +451,7 @@ function blink(){
             clearInterval(timer_id)
         }
     }
-
-    screen_check()
-
+ 
     function mob_handle()
     {
      if(ct>0&&game_over==0)
@@ -499,21 +502,21 @@ function blink(){
      }
     }
 
+    mob_input.addEventListener('input',(e)=>{
+        console.log('typed')
+        ipm = e.target.value.slice(-1)
+        mob_handle()
+        // document.querySelector('.tester').innerText = ipm
+    })
 
     function screen_check()
     {
-        if(window.matchMedia('(max-width: 480px)').matches && mf ==0)
+        if(window.matchMedia('(max-width: 480px)').matches)
         {
                 text_area.addEventListener('click',()=>{
                 mob_input.focus()
-                console.log('changes applied')
-                mob_input.addEventListener('input',(e)=>{
-                    console.log('typed')
-                    ipm = e.target.value.slice(-1)
-                    mob_handle()
-                    // document.querySelector('.tester').innerText = ipm
-                })
-                mf=1       
+                console.log('keybord applied')
+                mf = 1    
         })
     }
     }
