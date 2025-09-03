@@ -146,3 +146,13 @@ main{
         border-bottom:none;
     }
 }
+
+@media  screen and (max-width: 480px)
+{
+    main{
+        flex-flow: column;
+    }
+    .test_setting{
+        max-width: 85%;
+    }
+}
