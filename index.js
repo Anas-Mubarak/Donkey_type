@@ -384,6 +384,7 @@ screen_check()
 
   if(mf!=1)
   {
+    console.log('desktop mode')
         window.addEventListener('keydown',(e)=>{
         ipm = e.key
         if(ct>0&&game_over==0)
@@ -515,9 +516,9 @@ screen_check()
         {
                 text_area.addEventListener('click',()=>{
                 mob_input.focus()
-                console.log('keybord applied')
-                mf = 1    
+                console.log('keybord applied')    
         })
+        mf = 1
     }
     }
 // word goes here haha
