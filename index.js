@@ -449,65 +449,71 @@ function blink(){
 
     screen_check()
 
+    function mob_handle()
+    {
+     if(ct>0&&game_over==0)
+     {
+        if(ipm!='Backspace')
+        { 
+            if(li===word_index[word_count]&&li!=0)
+            {
+                console.log('space check')
+                console.log(e.key)
+                if(ipm===' ')
+                {
+                    console.log('c1')
+                    match_keys(ipm)
+                    console.log('c2')
+                    // console.log('f1')
+                    check_for_errors()
+                    li++
+                }
+            }
+            else
+            {
+                console.log('word check')
+                match_keys(ipm)
+                console.log('f1')
+                check_for_errors()
+                li++
+            }
+        }
+        else if(li>0){
+            li--
+            remove_keys()
+            check_for_errors()
+            // console.log(li)
+        }
+
+        if(!ft)
+        {
+            timer_id = setInterval(update_time,1000)
+            ft=1;
+        }
+        
+        if(word_index[word_count+1]==li || li==size)
+        {
+            wordcounter()
+        }
+        blink()
+     }
+    }
+
+
     function screen_check()
     {
-        if(window.matchMedia('(max-width: 480px)').matches)
+        if(window.matchMedia('(max-width: 480px)').matches && mf ==0)
         {
                 text_area.addEventListener('click',()=>{
                 mob_input.focus()
                 console.log('changes applied')
                 mob_input.addEventListener('input',(e)=>{
+                    console.log('typed')
                     ipm = e.target.value.slice(-1)
+                    mob_handle()
                     // document.querySelector('.tester').innerText = ipm
                 })
-                mf = 1 
-            if(ct>0&&game_over==0)
-            {
-                if(ipm!='Backspace')
-                { 
-                    if(li===word_index[word_count]&&li!=0)
-                    {
-                        console.log('space check')
-                        console.log(e.key)
-                        if(ipm===' ')
-                        {
-                            console.log('c1')
-                            match_keys(ipm)
-                            console.log('c2')
-                            // console.log('f1')
-                            check_for_errors()
-                            li++
-                        }
-                    }
-                    else
-                    {
-                        console.log('word check')
-                        match_keys(ipm)
-                        console.log('f1')
-                        check_for_errors()
-                        li++
-                    }
-                }
-                else if(li>0){
-                    li--
-                    remove_keys()
-                    check_for_errors()
-                    // console.log(li)
-                }
-
-                if(!ft)
-                {
-                    timer_id = setInterval(update_time,1000)
-                    ft=1;
-                }
-                
-                if(word_index[word_count+1]==li || li==size)
-                {
-                    wordcounter()
-                }
-                blink()
-            }
-
+                mf=1       
         })
     }
     }
