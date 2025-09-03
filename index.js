@@ -84,6 +84,7 @@ let wrong_list = {}
 let HS
 let tvm=0,ptvm=1
 let game_over
+let mob_input = document.getElementById('hiMob')
 
 HS = JSON.parse(localStorage.getItem('highscore'))
 if(HS===null)
@@ -442,6 +443,16 @@ function blink(){
         refresh()
         if(timer_id){
             clearInterval(timer_id)
+        }
+    }
+
+    screen_check()
+
+    function screen_check()
+    {
+        window.matchMedia('(max-width: 480px)').matches
+        {
+            mob_input.focus()
         }
     }
 // word goes here haha
