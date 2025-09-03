@@ -452,6 +452,7 @@ function blink(){
     {
         if(window.matchMedia('(max-width: 480px)').matches)
         {
+            console.log('changes applied')
             mob_input.focus()
         }
     }
