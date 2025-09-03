@@ -452,9 +452,10 @@ function blink(){
     {
         if(window.matchMedia('(max-width: 480px)').matches)
         {
-            console.log('changes applied')
-            text_area.addEventListener('click',()=>{
-                 mob_input.focus()
+                text_area.addEventListener('click',()=>{
+                mob_input.focus()
+                console.log('changes applied')
+
             })
         }
     }
