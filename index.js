@@ -85,6 +85,8 @@ let HS
 let tvm=0,ptvm=1
 let game_over
 let mob_input = document.getElementById('hiMob')
+let mf =0
+let ipm
 
 HS = JSON.parse(localStorage.getItem('highscore'))
 if(HS===null)
@@ -379,20 +381,26 @@ function blink(){
 }
 
     window.addEventListener('keydown',(e)=>{
+        if(mf==0)
+        {
+            ipm = e.key
+        }
+        else
+        {
+            
+        }
         if(ct>0&&game_over==0)
         {
-                // green_red()
-            // console.log('hi',e)
-            if(e.key!='Backspace')
+            if(ipm!='Backspace')
             { 
                 if(li===word_index[word_count]&&li!=0)
                 {
                     console.log('space check')
                     console.log(e.key)
-                    if(e.key===' ')
+                    if(ipm===' ')
                     {
                         console.log('c1')
-                        match_keys(e.key)
+                        match_keys(ipm)
                         console.log('c2')
                         // console.log('f1')
                         check_for_errors()
@@ -402,7 +410,7 @@ function blink(){
                 else
                 {
                     console.log('word check')
-                    match_keys(e.key)
+                    match_keys(ipm)
                     console.log('f1')
                     check_for_errors()
                     li++
@@ -455,8 +463,11 @@ function blink(){
                 text_area.addEventListener('click',()=>{
                 mob_input.focus()
                 console.log('changes applied')
-
-            })
-        }
+                mob_input.addEventListener('input',()=>{
+                    ipm = e.target.value.slice(-1)
+                    console.log(ipm)
+                })
+        })
+    }
     }
 // word goes here haha
