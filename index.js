@@ -87,6 +87,7 @@ let game_over
 let mob_input = document.getElementById('hiMob')
 let mf =0
 let ipm
+let bsflag = 0
 
 HS = JSON.parse(localStorage.getItem('highscore'))
 if(HS===null)
@@ -457,12 +458,11 @@ screen_check()
     {
      if(ct>0&&game_over==0)
      {
-        if(ipm!='Backspace')
+        if(bsflag!=1)
         { 
             if(li===word_index[word_count]&&li!=0)
             {
                 console.log('space check')
-                console.log(e.key)
                 if(ipm===' ')
                 {
                     console.log('c1')
@@ -484,6 +484,7 @@ screen_check()
         }
         else if(li>0){
             li--
+            bsflag = 0
             remove_keys()
             check_for_errors()
             // console.log(li)
@@ -503,16 +504,25 @@ screen_check()
      }
     }
 
+    mob_input.addEventListener('keydown',(e)=>
+    {
+        if(e.key=='Backspace')
+        {
+            bsflag = 1
+        } 
+    })
     mob_input.addEventListener('input',(e)=>{
         console.log('typed')
         ipm = e.target.value.slice(-1)
         mob_handle()
+        e.target.value = ''
+        console.log(e.target.value)
         // document.querySelector('.tester').innerText = ipm
     })
 
     function screen_check()
     {
-        if(window.matchMedia('(max-width: 480px)').matches)
+        if(window.matchMedia('(max-width: 480px)').matches && mf==0)
         {
                 text_area.addEventListener('click',()=>{
                 mob_input.focus()
