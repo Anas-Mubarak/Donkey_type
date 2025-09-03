@@ -382,6 +382,54 @@ function blink(){
 }
 
 screen_check()
+function word_check()
+{
+    if(li===word_index[word_count]&&li!=0)
+    {
+        console.log('space check')
+        if(ipm===' ')
+        {
+            console.log('c1')
+            match_keys(ipm)
+            console.log('c2')
+            // console.log('f1')
+            check_for_errors()
+            li++
+        }
+    }
+    else
+    {
+        console.log('word check')
+        match_keys(ipm)
+        console.log('f1')
+        check_for_errors()
+        li++
+    }
+}
+
+function word_check_else()
+{
+    li--
+    remove_keys()
+    check_for_errors()
+    // console.log(li)
+}
+
+
+function necessary_updates()
+{
+    if(!ft)
+    {
+        timer_id = setInterval(update_time,1000)
+        ft=1;
+    }
+    
+    if(word_index[word_count+1]==li || li==size)
+    {
+        wordcounter()
+    }
+    blink()
+}
 
   if(mf!=1)
   {
@@ -392,47 +440,12 @@ screen_check()
         {
             if(ipm!='Backspace')
             { 
-                if(li===word_index[word_count]&&li!=0)
-                {
-                    console.log('space check')
-                    console.log(e.key)
-                    if(ipm===' ')
-                    {
-                        console.log('c1')
-                        match_keys(ipm)
-                        console.log('c2')
-                        // console.log('f1')
-                        check_for_errors()
-                        li++
-                    }
-                }
-                else
-                {
-                    console.log('word check')
-                    match_keys(ipm)
-                    console.log('f1')
-                    check_for_errors()
-                    li++
-                }
+                word_check()
             }
             else if(li>0){
-                li--
-                remove_keys()
-                check_for_errors()
-                // console.log(li)
+                word_check_else() 
             }
-
-            if(!ft)
-            {
-                timer_id = setInterval(update_time,1000)
-                ft=1;
-            }
-            
-            if(word_index[word_count+1]==li || li==size)
-            {
-                wordcounter()
-            }
-            blink()
+            necessary_updates()
         }
     })
  } 
@@ -460,47 +473,16 @@ screen_check()
      {
         if(bsflag!=1)
         { 
-            if(li===word_index[word_count]&&li!=0)
-            {
-                console.log('space check')
-                if(ipm===' ')
-                {
-                    console.log('c1')
-                    match_keys(ipm)
-                    console.log('c2')
-                    // console.log('f1')
-                    check_for_errors()
-                    li++
-                }
-            }
-            else
-            {
-                console.log('word check')
-                match_keys(ipm)
-                console.log('f1')
-                check_for_errors()
-                li++
-            }
+           word_check()
         }
         else if(li>0){
-            li--
-            bsflag = 0
-            remove_keys()
-            check_for_errors()
-            // console.log(li)
+         console.log(bsflag,li)
+         word_check_else()
+         bsflag = 0
+         console.log(bsflag,li)
         }
 
-        if(!ft)
-        {
-            timer_id = setInterval(update_time,1000)
-            ft=1;
-        }
-        
-        if(word_index[word_count+1]==li || li==size)
-        {
-            wordcounter()
-        }
-        blink()
+        necessary_updates()
      }
     }
 
@@ -508,7 +490,8 @@ screen_check()
     {
         if(e.key=='Backspace')
         {
-            bsflag = 1
+            bsflag = 1 
+            mob_handle()
         } 
     })
     mob_input.addEventListener('input',(e)=>{
