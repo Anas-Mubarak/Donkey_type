@@ -465,7 +465,7 @@ function blink(){
                 console.log('changes applied')
                 mob_input.addEventListener('input',(e)=>{
                     ipm = e.target.value.slice(-1)
-                    console.log(ipm)
+                    document.body.footer.innerText = ipm
                 })
         })
     }
