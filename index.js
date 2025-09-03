@@ -450,7 +450,7 @@ function blink(){
 
     function screen_check()
     {
-        window.matchMedia('(max-width: 480px)').matches
+        if(window.matchMedia('(max-width: 480px)').matches)
         {
             mob_input.focus()
         }
